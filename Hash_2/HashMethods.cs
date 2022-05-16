@@ -53,7 +53,25 @@ namespace Hash_2
             return linkedlist;
         }
 
-        
+        public void Remove(K key)
+        {
+            int position = GetArrayPosition(key);
+            LinkedList<keyValues<K, V>> linkedlist = GetLinkedlist(position);
+            bool itemFound = false;
+            keyValues<K, V> founditem = default(keyValues<K, V>);
+            foreach (keyValues<K, V> item in linkedlist)
+            {
+                if (item.key.Equals(key))
+                {
+                    itemFound = true;
+                    founditem = item;
+                }
+            }
+            if (itemFound)
+            {
+                linkedlist.Remove(founditem);
+            }
+        }
         public void Display()
         {
             foreach (var linkedList in items)
